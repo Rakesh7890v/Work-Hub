@@ -36,7 +36,7 @@ const Home = () => {
         {
           id: 2,
           user: 'Madhavan.V',
-          text: 'The intuitive employee directory and customizable themes make navigation seamless and enjoyable. Well done!',
+          text: 'The intuitive employee directory and customizable themes make navigation seamless and enjoyable.
           image: user2,
         },
         {
