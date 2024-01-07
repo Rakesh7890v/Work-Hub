@@ -30,7 +30,7 @@ const Home = () => {
         {
           id: 1,
           user: 'Sangeetha.V',
-          text: 'The task notification feature is a productivity boost, keeping me organized. Great job on enhancing the system!',
+          text: 'The task notification feature is a productivity organized. Great job on enhancing the system!',
           image: user1,
         },
         {
