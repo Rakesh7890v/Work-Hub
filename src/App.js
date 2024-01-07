@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './Header';
 import Employee from './Employee';
 import Manager from './Manager';
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import Attendance from './Attendance';
 import Settings from './Settings';
 import Dashboard from './Dashboard';

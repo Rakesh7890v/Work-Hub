@@ -8,7 +8,7 @@ const Header = ({barShow, handleToggle, successMessage, messagetoAdmin, barcross
 
   return (
     <div className='head'>
-        <img src={logo} />
+        <img src={logo} alt='profile'/>
         {barShow && <FontAwesomeIcon onClick={handleToggle} className='head-toggle' icon={faBars} />}
         {barcrossShow && <FontAwesomeIcon onClick={handleCrossToggle} className='head-toggle' icon={faTimes} />}
         {successMessage && (<p className='success-message'>Successfully Added.</p>)}

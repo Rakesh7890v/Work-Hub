@@ -59,7 +59,7 @@ const Home = () => {
         return () => {
           clearInterval(intervalId);
         };
-      }, [currentIndex]);
+      }, []);
     
     const currentQuote = quotes[currentIndex];
 
