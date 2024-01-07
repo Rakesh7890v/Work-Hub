@@ -2,19 +2,19 @@ import React, { useState } from 'react';
 import * as XLSX from 'xlsx';
 import SideMenu from './SideMenu';
 
-const Attendance = ({showMenu, setShowMenu, handleMenu}) => {
+const Attendance = ({ showMenu, setShowMenu, handleMenu }) => {
   const attend = JSON.parse(localStorage.getItem('attendance')) || [];
   const [tableData, setTableData] = useState(attend);
 
-  const handleAddExcel = (e) => {
+  const handleAddExcel = async (e) => {
     const file = e.target.files[0];
-    const reader = new FileReader();
 
-    reader.onload = (event) => {
+    const reader = new FileReader();
+    reader.onload = async (event) => {
       const data = new Uint8Array(event.target.result);
       const workbook = XLSX.read(data, { type: 'array' });
-      const sheetName = workbook.SheetNames[0];
-      const sheet = workbook.Sheets[sheetName];
+
+      const sheet = workbook.Sheets[workbook.SheetNames[0]];
       const jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
 
       const formattedData = jsonData.slice(1).map((row) => ({
@@ -34,8 +34,8 @@ const Attendance = ({showMenu, setShowMenu, handleMenu}) => {
         Dec: row[13],
       }));
 
-      setTableData(formattedData);    
-      localStorage.setItem('attendance',JSON.stringify(formattedData));
+      setTableData(formattedData);
+      localStorage.setItem('attendance', JSON.stringify(formattedData));
     };
 
     reader.readAsArrayBuffer(file);
@@ -43,7 +43,7 @@ const Attendance = ({showMenu, setShowMenu, handleMenu}) => {
 
   return (
     <div>
-      <SideMenu showMenu={showMenu} setShowMenu={setShowMenu} handleMenu={handleMenu}/>
+      <SideMenu showMenu={showMenu} setShowMenu={setShowMenu} handleMenu={handleMenu} />
       <div className='top'>
         <input type="file" accept=".xlsx, .xls" onChange={handleAddExcel} className='files-input' />
       </div>
