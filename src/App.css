@@ -647,6 +647,7 @@ th, td {
     padding: 10px;
 }
 .quotes-right form input {
+    width: 200px;
     border-radius: 100px;
     border: 2px solid rgb(107, 193, 255);
     background: rgb(219, 244, 255);
