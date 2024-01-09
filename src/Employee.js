@@ -11,6 +11,7 @@ const EmployeePage = ({items, setItems, message, handleMessageShow}) => {
   const [newItem,setNewItem] = useState({id:'',name:'',salary:'',dob:''});
   const [managerMessages, setManagerMessages] = useState([]);
   const [showMessage, setShowMessage] = useState({state:''});
+  const [messageClick, setMessageClick] = useState([]);
 
   useEffect(() => {
     const storedMessages = JSON.parse(localStorage.getItem('MessagetoAdmin')) || [];
@@ -76,6 +77,11 @@ const EmployeePage = ({items, setItems, message, handleMessageShow}) => {
     setShowForm(false);
   }
 
+  const handleMessage = (id) => {
+    const clickedMessage = managerMessages.find((msg) => msg.id === id);
+    setMessageClick(clickedMessage ? [clickedMessage] : []);
+  }
+
   return (
     <div className='employee-page'>
       <div className='top'>
@@ -120,10 +126,11 @@ const EmployeePage = ({items, setItems, message, handleMessageShow}) => {
                 {managerMessages.map((msg) => msg.id === item.id && (
                   <div className="container" key={msg.id}>
                   {showMessage && ( 
-                    <div className="message-pointer" onClick={() => {handleDeleteMessage(item.id)}}></div>)}
-                      <div className="mfm" key={item.id}>
+                    <div className="message-pointer" onClick={() => {handleMessage(item.id)}}></div>)}
+                    {messageClick && messageClick.map((mess) => mess.id === item.id && <div className="mfm" key={item.id}>
                         <p>{msg.message}</p>
-                      </div>
+                        <button type='submit' className='msg-button' onClick={() => handleDeleteMessage(item.id)}>Delete</button>
+                      </div>)}
                 </div>))}
                 </td>
               </tr>

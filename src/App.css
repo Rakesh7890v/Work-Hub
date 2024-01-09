@@ -386,9 +386,18 @@ th, td {
         opacity: 1;
     }
 }
-
+.msg-button {
+    padding: 10px 20px;
+    border: 2px solid blue;
+    background: blue;
+    color: white;
+}
+.msg-button:hover {
+    background: transparent;
+    color: blue;
+}
 .mfm {
-    display: none;
+    display: block;
     position: absolute;
     text-wrap: wrap;
     width: 200px;
@@ -401,9 +410,6 @@ th, td {
     background: rgb(27, 27, 27,0.8);
     color: rgb(245, 242, 242);
     z-index: 1;
-}
-.container:hover .mfm {
-    display: flex;
 }
 .fatimes {
     position: absolute;
@@ -983,3 +989,4 @@ circle {
         left: 50px;
     }
 }  
+
