@@ -82,6 +82,11 @@ const EmployeePage = ({items, setItems, message, handleMessageShow}) => {
     setMessageClick(clickedMessage ? [clickedMessage] : []);
   }
 
+  const handleTimesmess = (id) => {
+    const click = messageClick.find((msg) => (msg.id === id) ? false : true);
+    setMessageClick(click);
+  }
+
   return (
     <div className='employee-page'>
       <div className='top'>
@@ -128,9 +133,10 @@ const EmployeePage = ({items, setItems, message, handleMessageShow}) => {
                   {showMessage && ( 
                     <div className="message-pointer" onClick={() => {handleMessage(item.id)}}></div>)}
                     {messageClick && messageClick.map((mess) => mess.id === item.id && <div className="mfm" key={item.id}>
+                        <FontAwesomeIcon onClick={() => handleTimesmess(item.id)} className='fatimes' icon={faTimes} />
                         <p>{msg.message}</p>
                         <button type='submit' className='msg-button' onClick={() => handleDeleteMessage(item.id)}>Delete</button>
-                      </div>)}
+                    </div>)}
                 </div>))}
                 </td>
               </tr>
